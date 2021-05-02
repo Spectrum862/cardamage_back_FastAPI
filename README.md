@@ -27,8 +27,8 @@ source env/bin/activate
 uvicorn main:app --reload
 ```
 
-##Dependencies manage
-create requirement
+## Dependencies 
+manage create requirement
 ```bash
 pip3 freeze > requirements.txt  
 ```
