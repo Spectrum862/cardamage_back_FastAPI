@@ -19,15 +19,8 @@ mockUser = {
 }
 
 
-def getUser(username: str):
-    if username in mockUser:
-        return mockUser[username]
-    else:
-        return None
-
-
 @router.get('/{username}')
-async def get_user_by(username: str):
+async def get_user_by_id(username: str):
     if username in mockUser:
         return mockUser[username]
 

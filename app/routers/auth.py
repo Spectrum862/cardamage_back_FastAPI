@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-import user
+from . import user
 
 router = APIRouter(
     prefix='/auth',
@@ -15,8 +15,8 @@ class LoginParam(BaseModel):
 
 @router.post('/login')
 async def login(param: LoginParam):
-    res_user = user.getUser(username=param.username)
-    if res_user:
+    res_user = await user.get_user_by_id(username=param.username)
+    if res_user and param.password is res_user['password']:
         return res_user
     else:
         raise HTTPException(status_code=401, detail='username or password incorrect')
