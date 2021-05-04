@@ -24,7 +24,7 @@ source env/bin/activate
 ## Start Project
 ```bash
 # --reload for hot reload
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 ## Dependencies 
