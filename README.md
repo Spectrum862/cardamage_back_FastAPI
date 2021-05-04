@@ -32,4 +32,8 @@ manage create requirement
 ```bash
 pip3 freeze > requirements.txt  
 ```
+install packages
+```bash
+pip3 install -r requirements.txt
+```
 
