@@ -8,13 +8,13 @@ router = APIRouter(
 )
 
 
-class LoginParam(BaseModel):
+class LoginRequestBody(BaseModel):
     username: str
     password: str
 
 
 @router.post('/login')
-async def login(param: LoginParam):
+async def login(param: LoginRequestBody):
     res_user = await user.get_user_by_id(username=param.username)
     if res_user and param.password is res_user['password']:
         return res_user

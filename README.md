@@ -37,3 +37,13 @@ install packages
 pip3 install -r requirements.txt
 ```
 
+## Install MRCNN
+
+```bash
+# from root
+git clone https://github.com/akTwelve/Mask_RCNN.git aktwelve_mask_rcnn
+# in aktwelve_mark_rcnn
+python setup.py clean --all install
+```
+
+

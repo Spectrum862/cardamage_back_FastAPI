@@ -2,3 +2,9 @@
 .vscode
 
 /env/
+./Mask_RCNN
+./aktwelve_mask_rcnn
+.ipynb_checkpoints
+
+app/asset/
+eslistcache
