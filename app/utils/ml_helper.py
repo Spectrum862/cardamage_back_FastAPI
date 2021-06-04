@@ -118,7 +118,7 @@ def get_base64_instant(image, boxes, masks, class_ids, class_names,
     ax.imshow(masked_image.astype(np.uint8))
     if auto_show:
         pic_io = io.BytesIO()
-        plt.savefig(pic_io,format='jpg',bbox_inches='tight')
+        plt.savefig(pic_io, format='jpg', bbox_inches='tight', pad_inches=-0.125)
         pic_io.seek(0)
         pic_base64 = base64.b64encode(pic_io.read())
         return pic_base64
