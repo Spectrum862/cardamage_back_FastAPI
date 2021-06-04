@@ -6,5 +6,5 @@
 ./aktwelve_mask_rcnn
 .ipynb_checkpoints
 
-app/asset/
+app/asset/model.h5
 eslistcache
