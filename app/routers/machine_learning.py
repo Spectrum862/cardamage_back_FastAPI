@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 import mrcnn.model as modellib
 from ..utils.ml_helper import get_base64_instant, InferenceConfig
-import os
 import skimage
 import numpy as np
 from pydantic import BaseModel
@@ -18,17 +17,19 @@ class PredictRequestBody(BaseModel):
     images: List[str]
 
 
+inference_config = InferenceConfig()
+inference_config.display()
+model_path = 'app/asset/model.h5'
+model = modellib.MaskRCNN(mode='inference', config=inference_config, model_dir=model_path)
+print('Loading weights from ', model_path)
+model.load_weights(model_path, by_name=True)
+classes = ['BG', '(A)scratch', '(B)minimal pound', '(C)heavy damage', '(D)crush or break']
+
+
 @router.post('/predict')
 async def predict(body: PredictRequestBody):
-    inference_config = InferenceConfig()
-    inference_config.display()
-    model_path = 'app/asset/model.h5'
-    model = modellib.MaskRCNN(mode='inference', config=inference_config, model_dir=model_path)
-    print('Loading weights from ', model_path)
-    model.load_weights(model_path, by_name=True)
     results = []
     instant_images = []
-    classes = ['BG', '(A)scratch', '(B)minimal pound', '(C)heavy damage', '(D)crush or break']
     for base64image in body.images:
         if isinstance(base64image, bytes):
             base64image = base64image.decode("utf-8")
