@@ -27,6 +27,7 @@ insurance_data = {
     }
 }
 
+
 class Insurance(BaseModel):
     insurance_id:str
     name:str
