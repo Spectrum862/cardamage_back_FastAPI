@@ -19,9 +19,9 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     if res_user is not None and form_data.password == res_user['password']:
         access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
         access_token = create_access_token(
-            data={"username": form_data.username}, expires_delta=access_token_expires
+            data={"username": form_data.username}, expires_delta=None
         )
-        return {"access_token": access_token, "token_type": "bearer"}
+        return {"access_token": access_token}
     else:
         raise credentials_exception
 
