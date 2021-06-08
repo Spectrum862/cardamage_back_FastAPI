@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from starlette import status
 
 from .dependencies import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, Token
-from .routers import user, auth, machine_learning
+from .routers import user, auth, insurance, machine_learning
 import tensorflow as tf
 from starlette.middleware.cors import CORSMiddleware
 
@@ -17,6 +17,7 @@ app = FastAPI()
 app.include_router(user.router)
 app.include_router(auth.router)
 app.include_router(machine_learning.router)
+app.include_router(insurance.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
